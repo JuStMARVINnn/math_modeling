@@ -4,17 +4,17 @@ class Main(Frame):
     def __init__(self, root):
         super(Main, self).__init__(root)
         self.build()
-    
+
     def build(self):
         self.formula = "0"
         self.label = Label(
-          text=self.formula, 
+          text=self.formula,
           font=("Times New Roman", 21, "bold"),
-          bg="#000", 
+          bg="#000",
           foreground="#FFF"
         )
         self.label.place(x=11, y=11)
-        
+
         buttons = [
           "+", "-", "*", "/", "DEL", "C", "X^2", "=",
           "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
@@ -27,8 +27,8 @@ class Main(Frame):
             x += 117
             if x > 400:
                 y += 81
-                x = 10    
-    
+                x = 10
+
     def logicalc(self, operation):
         if operation == "C":
           self.formula = ""
@@ -41,10 +41,13 @@ class Main(Frame):
         else:
           if self.formula == "":
               self.formula = "0"
-          self.formula = operation
-        
+          if self.formula == "0":
+              self.formula = operation
+          else:
+              self.formula += operation
+
         self.update()
-        
+
     def update(self):
         if self.formula == "":
             self.formula = "0"
