@@ -46,12 +46,12 @@ class Gardener:
         self.bush.grow_all()
         
     def harvest(self):
-        if self.bush.all_are_ripe == True:
+        if self.bush.all_are_ripe() == True:
             self.bush.give_away_all()
             print("Помидорки созрели и были собраны")
             return True
         else:
-            print("Вы очень плохой садовник, ваш кут вас не любит.")
+            print("Вы очень плохой садовник, ваш кут вас не любит, работайте лучше.")
             return False
             
     def knowledge_base(self):
@@ -62,6 +62,7 @@ class Gardener:
         
 bush = TomatoBush(3)
 gard = Gardener("Евгений", bush)
+gard.knowledge_base()
 
 while True:
     if gard.harvest() == True:
